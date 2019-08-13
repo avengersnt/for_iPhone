@@ -9,21 +9,28 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
-    var webView: WKWebView!
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-    }
+
+class ViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate {
+    
+    
+    
+    @IBOutlet weak var label1: UILabel!
+    
+    
+    @IBOutlet weak var webview1: WKWebView!
+    
+    let initialUrl = NSURL(string: "https://www.google.co.jp") //任意のURL
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: "https://www.google.co.jp")!  //任意のURL
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-        // Do any additional setup after loading the view.
+        if let url = NSURL(string: "https://www.google.com") {
+            let request = NSURLRequest(url: url as URL)
+          webview1.load(request as URLRequest)
+        
+        
+       
     }
-
-
+    
+    
 }
-
+}
